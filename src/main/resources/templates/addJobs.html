@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Author </title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<body>
+<div th:replace="base :: navlinksfg"></div>
+<form th:action="@{/processJobs}" method="post" th:object="${jobPost}">
+    <input type="hidden" th:field="*{id}"/>
+    Name: <input type="text" th:field="*{name}"/>
+    <input type="submit" value="New Author"/>
+</form>
+<div th:replace="base ::footerfg"></div>
+</body>
+</html>

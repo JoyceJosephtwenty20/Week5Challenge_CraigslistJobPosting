@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Sales</title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<body>
+<div th:replace="base :: navlinksfg"></div>
+<form th:action="@{/processJobs}" method="post" th:object="${}">
+    <input type="hidden" th:field="*{id}"/>
+    Item Name:<input type="text" th:field="*{name}"/> <br/>
+    Price:<input type="number" th:field="*{price}"/> <br/>
+
+    Choose a jobPosts:
+    <div th:each="jobPosts : ${jobs}">
+        <p th:text="${jobPosts.name}"></p>
+        <input  th:field="*{jobPosts}"
+                type="checkbox"
+                name="checkItems"
+                th:value="${jobPosts.id}"/>
+    </div>
+
+
+    <br/>
+    <input type="submit" value="New Sale">
+</form>
+<br>
+<div th:replace="base ::footerfg"></div>
+</body>
+</html>

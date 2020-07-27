@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <div th:replace="base :: headerfg"> </div>
+</head>
+<body>
+<div th:replace="base :: navlinksfg"> </div>
+<h1>Job Listing</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+    <th scope="col-3"> Title </th>
+    <th scope="col-6"> Jobs </th>
+    <th scope="col-3"> Author </th>
+    </thead>
+    <tbody>
+    <tr th:each="jobPosts : ${jobPosts}">
+        <td th:text="${jobPosts.name}"></td>
+        <td>
+            <th:block th:each="author : ${jobPosts.authors}">
+                <li th:inline="text">
+                    Item: [[${author.name}]] Price: $[[${author.price}]]
+                </li>
+            </th:block>
+        </td>
+        <td>
+            <button><a th:href="@{/detailCust/{id}(id=${jobPosts.id})}">Detail</a></button>
+            <button><a th:href="@{/updateCust/{id}(id=${jobPosts.id})}">Update</a></button>
+            <button><a th:href="@{/deleteCust/{id}(id=${jobPosts.id})}">Delete</a></button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div th:replace="base ::footerfg"></div>
+</body>
+</html>
